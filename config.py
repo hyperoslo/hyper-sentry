@@ -3,33 +3,16 @@
 # you can inherit and tweak settings to your hearts content.
 from sentry.conf.server import *
 
+import dotenv
+dotenv.read_dotenv()
+
 import os.path
 
 CONF_ROOT = os.path.dirname(__file__)
 
-DATABASES = {
-    'default': {
-        # You can swap out the engine for MySQL easily by changing this value
-        # to ``django.db.backends.mysql`` or to PostgreSQL with
-        # ``django.db.backends.postgresql_psycopg2``
-
-        # If you change this, you'll also need to install the appropriate python
-        # package: psycopg2 (Postgres) or mysql-python
-        'ENGINE': 'django.db.backends.sqlite3',
-
-        'NAME': os.path.join(CONF_ROOT, 'sentry.db'),
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-
-        # If you're using Postgres, we recommend turning on autocommit
-        # 'OPTIONS': {
-        #     'autocommit': True,
-        # }
-    }
-}
-
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the CACHES and Redis settings
@@ -87,17 +70,17 @@ DATABASES = {
 ################
 
 # You MUST configure the absolute URI root for Sentry:
-SENTRY_URL_PREFIX = 'http://sentry.example.com'  # No trailing slash!
+SENTRY_URL_PREFIX = os.environ['SENTRY_URL_PREFIX'] # No trailing slash!
 
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # and X-Forwarded-Host headers, and uncomment the following settings
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
 
 SENTRY_WEB_HOST = '0.0.0.0'
 SENTRY_WEB_PORT = 9000
 SENTRY_WEB_OPTIONS = {
-    'workers': 3,  # the number of gunicorn workers
+    'workers': os.environ['WEB_CONCURRENCY'],  # the number of gunicorn workers
     'limit_request_line': 0,  # required for raven-js
     'secure_scheme_headers': {'X-FORWARDED-PROTO': 'https'},
 }
@@ -126,7 +109,7 @@ SERVER_EMAIL = 'root@localhost'
 
 # If this file ever becomes compromised, it's important to regenerate your SECRET_KEY
 # Changing this value will result in all current sessions being invalidated
-SECRET_KEY = 'HnjZkpamxL4VSbpMx3S2rs2LiGZJsuTCqdpcFXYb7Dl8QJX7rtYp5A=='
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # http://twitter.com/apps/new
 # It's important that input a callback URL, even if its useless. We have no idea why, consult Twitter.
