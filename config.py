@@ -78,7 +78,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 
 SENTRY_WEB_HOST = '0.0.0.0'
-SENTRY_WEB_PORT = 9000
+SENTRY_WEB_PORT = os.environ['PORT']
 SENTRY_WEB_OPTIONS = {
     'workers': os.environ['WEB_CONCURRENCY'],  # the number of gunicorn workers
     'limit_request_line': 0,  # required for raven-js
