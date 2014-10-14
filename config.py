@@ -14,6 +14,20 @@ CONF_ROOT = os.path.dirname(__file__)
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
+####################
+## Authentication ##
+####################
+
+# Should Sentry allow users to create new accounts?
+SENTRY_ALLOW_REGISTRATION = False
+
+# Should Sentry make all data publicly accessible?
+SENTRY_PUBLIC = False
+
+# Should Sentry allow users without the 'sentry.change_project' permission to
+# make projects globally public?
+SENTRY_ALLOW_PUBLIC_PROJECTS = False
+
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the Caching and Redis settings
 
