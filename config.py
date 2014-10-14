@@ -15,11 +15,11 @@ import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
-# configuring the CACHES and Redis settings
+# configuring the Caching and Redis settings
 
-###########
-## CACHE ##
-###########
+#############
+## Caching ##
+#############
 
 # You'll need to install the required dependencies for Memcached:
 #   pip install python-memcached
@@ -103,9 +103,9 @@ EMAIL_USE_TLS = False
 # The email address to send on behalf of
 SERVER_EMAIL = 'root@localhost'
 
-###########
-## etc. ##
-###########
+###################
+## Miscellaneous ##
+###################
 
 # If this file ever becomes compromised, it's important to regenerate your SECRET_KEY
 # Changing this value will result in all current sessions being invalidated
