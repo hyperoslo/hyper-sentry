@@ -116,7 +116,7 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 
 # The email address to send on behalf of
-SERVER_EMAIL = 'root@localhost'
+SERVER_EMAIL = env('SERVER_EMAIL', required=True)
 
 ###################
 ## Miscellaneous ##
