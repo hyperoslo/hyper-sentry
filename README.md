@@ -30,6 +30,11 @@ Copy the sample environmental file and update accordingly
     $ cp .env-sample .env
 
 
+## Database Creation
+
+    $ psql template1 -c 'CREATE DATABASE "hyper-sentry-development"'
+
+
 ## Running Sentry (in virtual environment)
 
     $ source .virtualenv/bin/activate
