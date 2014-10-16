@@ -5,6 +5,7 @@ from sentry.conf.server import *
 
 import dotenv
 dotenv.read_dotenv()
+from getenv import env
 
 import os.path
 
@@ -84,7 +85,7 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 ################
 
 # You MUST configure the absolute URI root for Sentry:
-SENTRY_URL_PREFIX = os.environ['SENTRY_URL_PREFIX'] # No trailing slash!
+SENTRY_URL_PREFIX = env('SENTRY_URL_PREFIX', required=True) # No trailing slash!
 
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # and X-Forwarded-Host headers, and uncomment the following settings
@@ -94,7 +95,7 @@ USE_X_FORWARDED_HOST = True
 SENTRY_WEB_HOST = '0.0.0.0'
 SENTRY_WEB_PORT = os.environ['PORT']
 SENTRY_WEB_OPTIONS = {
-    'workers': os.environ['WEB_CONCURRENCY'],  # the number of gunicorn workers
+    'workers': env('WEB_CONCURRENCY', required=True),  # the number of gunicorn workers
     'limit_request_line': 0,  # required for raven-js
     'secure_scheme_headers': {'X-FORWARDED-PROTO': 'https'},
 }
@@ -123,7 +124,7 @@ SERVER_EMAIL = 'root@localhost'
 
 # If this file ever becomes compromised, it's important to regenerate your SECRET_KEY
 # Changing this value will result in all current sessions being invalidated
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = env('SECRET_KEY', required=True)
 
 # http://twitter.com/apps/new
 # It's important that input a callback URL, even if its useless. We have no idea why, consult Twitter.
