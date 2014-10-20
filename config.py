@@ -87,6 +87,9 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # You MUST configure the absolute URI root for Sentry:
 SENTRY_URL_PREFIX = env('SENTRY_URL_PREFIX', required=True) # No trailing slash!
 
+# List of allowed hosts
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', required=True).split(',')
+
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # and X-Forwarded-Host headers, and uncomment the following settings
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
