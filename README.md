@@ -23,9 +23,9 @@ support for Heroku.
     $ pip install -r requirements.txt
 
 
-## Environmental variables
+## Environment variables
 
-Copy the sample environmental file and update accordingly
+Copy the sample environment file and update accordingly
 
     $ cp .env-sample .env
 
