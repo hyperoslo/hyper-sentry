@@ -152,3 +152,9 @@ TRELLO_API_SECRET = ''
 # https://confluence.atlassian.com/display/BITBUCKET/OAuth+Consumers
 BITBUCKET_CONSUMER_KEY = ''
 BITBUCKET_CONSUMER_SECRET = ''
+
+# Force SSL configuration and middleware
+SSLIFY_DISABLE = env('SSLIFY_DISABLE', False)
+MIDDLEWARE_CLASSES = (
+    'sslify.middleware.SSLifyMiddleware',
+) + MIDDLEWARE_CLASSES
