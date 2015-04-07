@@ -26,9 +26,11 @@ support for Heroku.
 
 ## Environment variables
 
-Copy the sample environment file and update accordingly
+Copy the sample environment file and update accordingly:
 
     $ cp .env-sample .env
+    
+Make sure to generate a new unique `SECRET_KEY`.
 
 
 ## Database Creation
