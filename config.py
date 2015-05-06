@@ -32,11 +32,29 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the Caching and Redis settings
 
-#############
-## Caching ##
-#############
+###########
+## Redis ##
+###########
 
-# You'll need to install the required dependencies for Memcached:
+# Generic Redis configuration used as defaults for various things including:
+# Buffers, Quotas, TSDB
+
+SENTRY_REDIS_OPTIONS = {
+    'hosts': {
+        0: {
+            'host': '127.0.0.1',
+            'port': 6379,
+        }
+    }
+}
+
+###########
+## Cache ##
+###########
+
+# If you wish to use memcached, install the dependencies and adjust the config
+# as shown:
+#
 #   pip install python-memcached
 #
 # CACHES = {
@@ -45,6 +63,11 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 #         'LOCATION': ['127.0.0.1:11211'],
 #     }
 # }
+#
+# SENTRY_CACHE = 'sentry.cache.django.DjangoCache'
+
+SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
+
 
 ###########
 ## Queue ##
