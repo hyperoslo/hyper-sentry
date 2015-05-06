@@ -32,6 +32,17 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the Caching and Redis settings
 
+#############
+## General ##
+#############
+
+# The administrative email for this installation.
+# Note: This will be reported back to getsentry.com as the point of contact. See
+# the beacon documentation for more information.
+
+# SENTRY_ADMIN_EMAIL = 'your.name@example.com'
+SENTRY_ADMIN_EMAIL = ''
+
 ###########
 ## Redis ##
 ###########
@@ -39,14 +50,15 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # Generic Redis configuration used as defaults for various things including:
 # Buffers, Quotas, TSDB
 
-SENTRY_REDIS_OPTIONS = {
-    'hosts': {
-        0: {
-            'host': '127.0.0.1',
-            'port': 6379,
-        }
-    }
-}
+# SENTRY_REDIS_OPTIONS = {
+#     'hosts': {
+#         0: {
+#             'host': '127.0.0.1',
+#             'port': 6379,
+#         }
+#     }
+# }
+#
 
 ###########
 ## Cache ##
@@ -77,9 +89,9 @@ SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
 # information on configuring your queue broker and workers. Sentry relies
 # on a Python framework called Celery to manage queues.
 
-# You can enable queueing of jobs by turning off the always eager setting:
 # CELERY_ALWAYS_EAGER = False
 # BROKER_URL = 'redis://localhost:6379'
+
 
 ####################
 ## Update Buffers ##
@@ -90,17 +102,28 @@ SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
 # numbers of the same events being sent to the API in a short amount of time.
 # (read: if you send any kind of real data to Sentry, you should enable buffers)
 
-# You'll need to install the required dependencies for Redis buffers:
-#   pip install redis hiredis nydus
-#
 # SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
-# SENTRY_REDIS_OPTIONS = {
-#     'hosts': {
-#         0: {
-#             'host': '127.0.0.1',
-#             'port': 6379,
-#         }
-#     }
+
+############
+## Quotas ##
+############
+
+# Quotas allow you to rate limit individual projects or the Sentry install as
+# a whole.
+
+# SENTRY_QUOTAS = 'sentry.quotas.redis.RedisQuota'
+
+
+##################
+## File storage ##
+##################
+
+# Any Django storage backend is compatible with Sentry. For more solutions see
+# the django-storages package: https://django-storages.readthedocs.org/en/latest/
+
+# SENTRY_FILESTORE = 'django.core.files.storage.FileSystemStorage'
+# SENTRY_FILESTORE_OPTIONS = {
+#     'location': '/tmp/sentry-files',
 # }
 
 ################
