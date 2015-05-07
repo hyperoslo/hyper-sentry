@@ -2,5 +2,6 @@ cryptography
 django-dotenv
 django-getenv
 dj_database_url
+psycopg2
 enum34 == 0.9.18
 sentry == 7.4.3
