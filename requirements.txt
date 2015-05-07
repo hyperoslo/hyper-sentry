@@ -1,5 +1,3 @@
 cryptography
-psycopg2
-dj-database-url
-gevent
+enum34
 sentry == 7.4.3
