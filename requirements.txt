@@ -1,3 +1,5 @@
 cryptography
+django-dotenv
+django-getenv
 enum34 == 0.9.18
 sentry == 7.4.3
