@@ -1,6 +1,7 @@
 cryptography
 django-dotenv
 django-getenv
+django-sslify
 dj_database_url
 psycopg2
 enum34 == 0.9.18
