@@ -43,6 +43,10 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # SENTRY_ADMIN_EMAIL = 'your.name@example.com'
 SENTRY_ADMIN_EMAIL = ''
 
+# Default time zone for localization in the UI.
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+SENTRY_DEFAULT_TIME_ZONE = env('DEFAULT_TIME_ZONE', 'UTC')
+
 ###########
 ## Redis ##
 ###########
