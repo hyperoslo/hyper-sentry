@@ -39,9 +39,7 @@ SENTRY_ALLOW_PUBLIC_PROJECTS = False
 # The administrative email for this installation.
 # Note: This will be reported back to getsentry.com as the point of contact. See
 # the beacon documentation for more information.
-
-# SENTRY_ADMIN_EMAIL = 'your.name@example.com'
-SENTRY_ADMIN_EMAIL = ''
+SENTRY_ADMIN_EMAIL = env('SENTRY_ADMIN_EMAIL', required=True)
 
 ###########
 ## Redis ##
