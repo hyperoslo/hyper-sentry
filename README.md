@@ -57,3 +57,7 @@ Add the application remote:
 Deploying:
 
     $ git push heroku master
+
+You may also need to run:
+
+    $ heroku run sentry --config=config.py upgrade
