@@ -8,4 +8,4 @@ django-ses==0.7.0
 django-sslify==0.2.7
 enum34==0.9.18
 psycopg2==2.6
-sentry==7.4.3
+sentry==7.7.0
