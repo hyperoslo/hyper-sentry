@@ -185,3 +185,9 @@ SERVER_EMAIL = env('SERVER_EMAIL', required=True)
 # If you're using mailgun for inbound mail, set your API key and configure a
 # route to forward to /api/hooks/mailgun/inbound/
 MAILGUN_API_KEY = ''
+
+# Force SSL configuration and middleware
+SSLIFY_DISABLE = env('SSLIFY_DISABLE', False)
+MIDDLEWARE_CLASSES = (
+    'sslify.middleware.SSLifyMiddleware',
+) + MIDDLEWARE_CLASSES
