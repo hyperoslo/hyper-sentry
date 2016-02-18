@@ -1,3 +1,3 @@
-web: sentry --config=sentry.conf.py start
-worker: sentry --config=sentry.conf.py celery worker
-clock: sentry --config=sentry.conf.py celery beat
+web: SENTRY_CONF=./ sentry start
+worker: SENTRY_CONF=./ sentry celery worker
+clock: SENTRY_CONF=./ sentry celery beat
