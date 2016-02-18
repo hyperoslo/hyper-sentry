@@ -3,6 +3,10 @@
 # you can inherit and tweak settings to your hearts content.
 from sentry.conf.server import *
 
+import dotenv
+dotenv.read_dotenv()
+from getenv import env
+
 import os.path
 
 CONF_ROOT = os.path.dirname(__file__)
