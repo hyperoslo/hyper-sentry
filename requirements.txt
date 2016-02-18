@@ -1,4 +1,4 @@
-cryptography==0.8.2
+cryptography==1.2.2
 dj-database-url==0.3.0
 dj-redis-url==0.1.4
 django==1.6.0
