@@ -30,6 +30,9 @@ SENTRY_USE_BIG_INTS = True
 # and thus various UI optimizations should be enabled.
 SENTRY_SINGLE_ORGANIZATION = True
 
+# Enable SSO
+SENTRY_FEATURES['organizations:sso'] = True
+
 # Should Sentry allow users to create new accounts?
 SENTRY_ALLOW_REGISTRATION = False
 
