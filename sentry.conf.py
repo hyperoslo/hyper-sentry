@@ -191,3 +191,10 @@ SSLIFY_DISABLE = env('SSLIFY_DISABLE', False)
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
 ) + MIDDLEWARE_CLASSES
+
+##################
+# Single Sign-On #
+##################
+
+GOOGLE_CLIENT_ID = env('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = ENV('GOOGLE_CLIENT_SECRET')
